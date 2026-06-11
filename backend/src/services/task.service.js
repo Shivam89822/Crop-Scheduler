@@ -1,5 +1,6 @@
 const Task = require("../models/task.model");
 const ApiError = require("../utils/api-error");
+const { isValidObjectId } = require("../utils/object-id");
 
 const getTodayTasks = async () => {
   const startOfDay = new Date();
@@ -16,7 +17,29 @@ const getTodayTasks = async () => {
   }).sort({ dueDate: 1 });
 };
 
+const getTasks = async (filters = {}) => {
+  const query = {};
+
+  if (filters.cropId) {
+    if (!isValidObjectId(filters.cropId)) {
+      throw new ApiError(400, "Invalid crop id");
+    }
+
+    query.cropId = filters.cropId;
+  }
+
+  if (filters.isDone !== undefined) {
+    query.isDone = filters.isDone === "true";
+  }
+
+  return Task.find(query).sort({ dueDate: 1, createdAt: 1 });
+};
+
 const markTaskComplete = async (taskId) => {
+  if (!isValidObjectId(taskId)) {
+    throw new ApiError(400, "Invalid task id");
+  }
+
   const task = await Task.findByIdAndUpdate(
     taskId,
     { isDone: true },
@@ -31,6 +54,7 @@ const markTaskComplete = async (taskId) => {
 };
 
 module.exports = {
+  getTasks,
   getTodayTasks,
   markTaskComplete
 };

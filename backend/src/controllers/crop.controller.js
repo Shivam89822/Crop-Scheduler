@@ -9,6 +9,14 @@ const createCrop = asyncHandler(async (req, res) => {
   });
 });
 
+const getCrops = asyncHandler(async (req, res) => {
+  const crops = await cropService.getCrops(req.query);
+  res.status(200).json({
+    success: true,
+    data: crops
+  });
+});
+
 const getCropById = asyncHandler(async (req, res) => {
   const crop = await cropService.getCropById(req.params.id);
   res.status(200).json({
@@ -19,5 +27,6 @@ const getCropById = asyncHandler(async (req, res) => {
 
 module.exports = {
   createCrop,
+  getCrops,
   getCropById
 };

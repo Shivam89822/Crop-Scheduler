@@ -29,7 +29,9 @@ backend/
 - `POST /api/farms`
 - `GET /api/farms`
 - `POST /api/crops`
+- `GET /api/crops`
 - `GET /api/crops/:id`
+- `GET /api/tasks`
 - `GET /api/tasks/today`
 - `PATCH /api/tasks/:id/complete`
 
@@ -40,3 +42,11 @@ backend/
 3. Start MongoDB
 4. Run `npm run dev`
 5. Build the real crop schedule templates for chilli and cotton
+
+## MVP Data Flow
+
+Current MVP flow is:
+
+`Farm -> Crop -> Tasks`
+
+User/auth entities can be added later without blocking schedule generation work.

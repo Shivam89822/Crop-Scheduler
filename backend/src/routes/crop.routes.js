@@ -5,6 +5,7 @@ const validateCreateCrop = require("../validators/crop.validator");
 const router = express.Router();
 
 router.post("/", validateCreateCrop, cropController.createCrop);
+router.get("/", cropController.getCrops);
 router.get("/:id", cropController.getCropById);
 
 module.exports = router;
