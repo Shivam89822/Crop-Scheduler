@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Crop Scheduler",
+    "slug": "crop-scheduler",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F4F7EE"
+    },
+    "android": {
+      "package": "com.cropscheduler.app"
+    }
+  }
+}
