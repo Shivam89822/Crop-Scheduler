@@ -1,0 +1,22 @@
+const CROP_TYPES = {
+  CHILLI: "CHILLI",
+  COTTON: "COTTON"
+};
+
+const CROP_STATUSES = {
+  ACTIVE: "ACTIVE",
+  HARVESTED: "HARVESTED",
+  FAILED: "FAILED"
+};
+
+const TASK_PRIORITIES = {
+  HIGH: "HIGH",
+  MEDIUM: "MEDIUM",
+  LOW: "LOW"
+};
+
+module.exports = {
+  CROP_TYPES,
+  CROP_STATUSES,
+  TASK_PRIORITIES
+};
